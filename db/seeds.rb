@@ -5,6 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(name:  "Example User",
+user = User.create!(name:  "Example User",
              email: "example@railstutorial.org")
 
+5.times do |num|
+  task_name = "sample_task" + num.to_s
+  date = "2022-#{12 - num}-1"
+  deadline = Date.parse(date)
+  Task.create!(name: task_name, completed: false, user_id: user.id, deadline: deadline)
+end
