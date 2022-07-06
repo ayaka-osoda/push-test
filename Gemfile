@@ -48,6 +48,7 @@ group :development do
   gem 'rubocop-rails'
   # rspec導入時に追加でinstall
   # gem "rubocop-rspec"
+  gem 'pre-commit', require: false
 end
 
 group :test do
