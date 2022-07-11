@@ -6,8 +6,11 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Task.find_by(id: update_params[:id])
-    @task.completed = update_params[:completed]
+    tasks_form = Tasks::UpdateForm.new(update_params)
+    return if tasks_form.invalid?
+
+    @task = Task.find_by(id: tasks_form[:id])
+    @task.completed = tasks_form[:completed]
     @task.save
     redirect_to tasks_url
   end

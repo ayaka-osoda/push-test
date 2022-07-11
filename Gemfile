@@ -49,6 +49,8 @@ group :development do
   # rspec導入時に追加でinstall
   # gem "rubocop-rspec"
   gem 'pre-commit', require: false
+
+  gem 'virtus'
 end
 
 group :test do
