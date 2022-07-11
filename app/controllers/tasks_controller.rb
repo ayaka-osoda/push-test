@@ -6,9 +6,15 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Task.find_by(id: params[:id])
-    @task.completed = !@task.completed
+    @task = Task.find_by(id: update_params[:id])
+    @task.completed = update_params[:completed]
     @task.save
     redirect_to tasks_url
+  end
+
+  private
+
+  def update_params
+    params.permit(:id, :completed)
   end
 end
