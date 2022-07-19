@@ -8,4 +8,11 @@
   </div>
 <% end %>
 
-<%= javascript_pack_tag 'hello_react' %>
+<%= content_tag :div,
+                id: "resources-container",
+                data: {
+                    tasks: @tasks
+                }.to_json do %>
+<% end %>
+
+<%= javascript_pack_tag 'tasks' %>
