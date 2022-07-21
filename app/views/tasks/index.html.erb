@@ -1,13 +1,3 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
-<div><% @tasks.each do |task| %>
-    <p>
-      <%= button_to task.completed ? "完了" : "未完了", {controller: 'tasks', action: 'update', id: task.id, completed: !task.completed}, {:method => :put} %>
-      <span>　<%= task.name %></span>
-    </p>
-  </div>
-<% end %>
-
 <%= content_tag :div,
                 id: "resources-container",
                 data: {

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
+  protect_from_forgery
+
   def index
     @tasks = Task.all
   end
@@ -12,7 +14,7 @@ class TasksController < ApplicationController
     @task = Task.find_by(id: tasks_form[:id])
     @task.completed = tasks_form[:completed]
     @task.save
-    redirect_to tasks_url
+    Task.all
   end
 
   private

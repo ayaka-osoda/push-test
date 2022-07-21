@@ -8,14 +8,33 @@ import ReactDOM from 'react-dom'
 const Tasks = (props) => {
   const [state, setState] = useState({...props});
 
-  // FIXME: APIを呼び出してデータを変更する
-  const toggleCompleted = (id) => {
-    const newTasks = state.tasks.map(task => {
-      if (task.id === id) task.completed = !task.completed;
-      return task;
-    });
-    setState({ tasks: newTasks });
-  };
+  const updateTask = (task) => {
+    fetch("/tasks/" + task.id, {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "id": task.id,
+          "completed": !task.completed
+        })
+      })
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response;
+      })
+      .then((response) => response.json())
+      .then((responseData) => {
+        debugger;
+        setState({ tasks: responseData })
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 
   return (
     <div className="todo-ap">
@@ -23,7 +42,7 @@ const Tasks = (props) => {
       <ul className="todo-list">
         {state.tasks.map(task => {
           return <li key={task.id}>
-              <button onClick={() => toggleCompleted(task.id)}>{task.completed ? "完了" : "未完了"}</button><span>{task.name}</span>
+              <button onClick={() => updateTask(task)}>{task.completed ? "完了" : "未完了"}</button><span>{task.name}</span>
             </li>;
         })}
       </ul>
