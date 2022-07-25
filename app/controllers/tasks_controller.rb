@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     @task = Task.find_by(id: tasks_form[:id])
     @task.completed = tasks_form[:completed]
     @task.save
-    Task.all
+    render json: Task.all
   end
 
   private

@@ -26,9 +26,8 @@ const Tasks = (props) => {
         }
         return response;
       })
-      .then((response) => response.json())
+      .then((response) => response.clone().json())
       .then((responseData) => {
-        debugger;
         setState({ tasks: responseData })
       })
       .catch((err) => {
