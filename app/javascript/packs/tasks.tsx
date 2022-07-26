@@ -2,8 +2,9 @@
 // like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
 // of the page.
 
-import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
+import { useState } from 'react'
+import * as React from 'react';
+import * as ReactDOM from 'react-dom'
 
 const Tasks = (props) => {
   const [state, setState] = useState({...props});
