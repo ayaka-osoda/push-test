@@ -8,6 +8,7 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "target": "es5",
+    "types": ["webpack-env"],
     "jsx": "react"
   },
   "exclude": [
