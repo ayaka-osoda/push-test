@@ -20,5 +20,6 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    'max-len': [{ 'code': 120 }],
   },
 };
