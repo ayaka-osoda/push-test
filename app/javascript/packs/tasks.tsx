@@ -2,25 +2,36 @@
 // like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
 // of the page.
 
-import { useState } from 'react'
+import { useState } from 'react';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom'
+import * as ReactDOM from 'react-dom';
 
-const Tasks = (props) => {
-  const [state, setState] = useState({...props});
+interface Task {
+  id: number;
+  name: string;
+  completed: boolean;
+}
 
-  const updateTask = (task) => {
-    fetch("/tasks/" + task.id, {
-        method: 'PUT',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          "id": task.id,
-          "completed": !task.completed
-        })
-      })
+interface Props {
+  // eslint-disable-next-line react/no-unused-prop-types
+  tasks: Task[];
+}
+
+function Tasks(props: Props) {
+  const [state, setState] = useState({ ...props });
+
+  const updateTask = (task: Task) => {
+    fetch(`/tasks/${task.id}`, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: task.id,
+        completed: !task.completed,
+      }),
+    })
       .then((response) => {
         if (!response.ok) {
           throw Error(response.statusText);
@@ -29,33 +40,33 @@ const Tasks = (props) => {
       })
       .then((response) => response.clone().json())
       .then((responseData) => {
-        setState({ tasks: responseData })
+        setState({ tasks: responseData });
       })
       .catch((err) => {
         console.error(err);
       });
-  }
+  };
 
   return (
     <div className="todo-ap">
       <h1>Todo List</h1>
       <ul className="todo-list">
-        {state.tasks.map(task => {
-          return <li key={task.id}>
-              <button onClick={() => updateTask(task)}>{task.completed ? "完了" : "未完了"}</button><span>{task.name}</span>
-            </li>;
-        })}
+        {state.tasks.map((task) => (
+          <li key={task.id}>
+            <button type="button" onClick={() => updateTask(task)}>
+              {task.completed ? '完了' : '未完了'}
+            </button>
+            <span>{task.name}</span>
+          </li>
+        ))}
       </ul>
     </div>
-  )
+  );
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const node = document.getElementById('resources-container')
-  const data = JSON.parse(node.getAttribute('data'))
+  const node = document.getElementById('resources-container');
+  const data = JSON.parse(node.getAttribute('data'));
 
-  ReactDOM.render(
-    <Tasks {...data}/>,
-    node,
-  )
-})
+  ReactDOM.render(<Tasks {...data} />, node);
+});
