@@ -11,6 +11,7 @@ module.exports = {
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
+      tsx: true,
     },
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -21,5 +22,6 @@ module.exports = {
   ],
   rules: {
     'max-len': [{ 'code': 120 }],
+    'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
   },
 };
