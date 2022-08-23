@@ -6,6 +6,8 @@ import { useState } from 'react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+import { Button } from '../components';
+
 interface Task {
   id: number;
   name: string;
@@ -53,9 +55,9 @@ function Tasks(props: Props) {
       <ul className="todo-list">
         {state.tasks.map((task) => (
           <li key={task.id}>
-            <button type="button" onClick={() => updateTask(task)}>
+            <Button onClick={() => updateTask(task)}>
               {task.completed ? '完了' : '未完了'}
-            </button>
+            </Button>
             <span>{task.name}</span>
           </li>
         ))}
