@@ -5,6 +5,7 @@
 import { useState } from 'react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import { Button } from '../components';
 
@@ -66,9 +67,7 @@ function Tasks(props: Props) {
   );
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const node = document.getElementById('resources-container');
-  const data = JSON.parse(node.getAttribute('data'));
-
-  ReactDOM.render(<Tasks {...data} />, node);
-});
+const container = document.getElementById('resources-container');
+const root = createRoot(container);
+const data = JSON.parse(container.getAttribute('data'));
+root.render(<Tasks {...data} />);
