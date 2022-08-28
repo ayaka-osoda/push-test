@@ -1,0 +1,33 @@
+// Place all the styles related to the Tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$color-primary: #1e90ff;
+$color-secondary: #b0e0e6;
+
+$color-white: #fff;
+
+.btn {
+  align-items: center;
+  border-radius: 0.4vw;
+  border-width: 0.2vw;
+  border-style: solid;
+  cursor: pointer;
+  display: flex;
+  height: 2vw;
+  padding: 1vw;
+  &:hover {
+    transition: 0.2s linear;
+    &.btn-primary,
+    &.btn-secondary {
+      background: $color-white;
+    }
+  }
+}
+.btn-primary {
+  background: $color-primary;
+  border-color: $color-primary;
+}
+.btn-secondary {
+  background: $color-secondary;
+  border-color: $color-secondary;
+}

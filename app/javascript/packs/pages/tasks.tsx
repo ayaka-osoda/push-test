@@ -56,13 +56,14 @@ function Tasks(props: Props) {
       <ul className="todo-list">
         {state.tasks.map((task) => (
           <li key={task.id}>
-            <Button onClick={() => updateTask(task)}>
+            <Button appearance='primary' onClick={() => updateTask(task)}>
               {task.completed ? '完了' : '未完了'}
             </Button>
             <span>{task.name}</span>
           </li>
         ))}
       </ul>
+      <Button appearance='secondary'>back</Button>
     </div>
   );
 }
