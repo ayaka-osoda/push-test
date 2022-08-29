@@ -4,10 +4,9 @@
 
 import { useState } from 'react';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
 
-import { Button } from '../components';
+import { Base, Button, Title } from '../components';
 
 interface Task {
   id: number;
@@ -51,20 +50,23 @@ function Tasks(props: Props) {
   };
 
   return (
-    <div className="todo-ap">
-      <h1>Todo List</h1>
-      <ul className="todo-list">
-        {state.tasks.map((task) => (
-          <li key={task.id}>
-            <Button appearance='primary' onClick={() => updateTask(task)}>
-              {task.completed ? '完了' : '未完了'}
-            </Button>
-            <span>{task.name}</span>
-          </li>
-        ))}
-      </ul>
-      <Button appearance='secondary'>back</Button>
-    </div>
+    <Base>
+      <div className="todo-ap">
+        <Title>Todo List</Title>
+        <Button appearance='primary'>新規作成</Button>
+        <ul className="todo-list">
+          {state.tasks.map((task) => (
+            <li key={task.id}>
+              <Button appearance='primary' onClick={() => updateTask(task)}>
+                {task.completed ? '完了' : '未完了'}
+              </Button>
+              <span>{task.name}</span>
+            </li>
+          ))}
+        </ul>
+        <Button appearance='secondary'>back</Button>
+      </div>
+    </Base>
   );
 }
 
