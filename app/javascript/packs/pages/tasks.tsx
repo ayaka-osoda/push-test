@@ -6,7 +6,7 @@ import { useState } from 'react';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 
-import { Base, Button, Title } from '../components';
+import { Base, Button, List, ListWrapper, Title } from '../components';
 
 interface Task {
   id: number;
@@ -54,16 +54,16 @@ function Tasks(props: Props) {
       <div className="todo-ap">
         <Title>Todo List</Title>
         <Button appearance='primary'>新規作成</Button>
-        <ul className="todo-list">
+        <ListWrapper>
           {state.tasks.map((task) => (
-            <li key={task.id}>
+            <List key={task.id}>
               <Button appearance='primary' onClick={() => updateTask(task)}>
                 {task.completed ? '完了' : '未完了'}
               </Button>
               <span>{task.name}</span>
-            </li>
+            </List>
           ))}
-        </ul>
+        </ListWrapper>
         <Button appearance='secondary'>back</Button>
       </div>
     </Base>

@@ -1,0 +1,24 @@
+// Place all the styles related to the Tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$color-primary: #1e90ff;
+$color-secondary: #b0e0e6;
+
+$color-white: #fff;
+
+.list-wrapper-outsider {
+  border: solid 0.2vw $color-primary;
+  max-height: 100%;
+  overflow: overlay;
+  padding: 0 1vw;
+}
+.list-wrapper {
+  margin: 1vw 0;
+  > :not(:last-child) {
+    margin-bottom: 1vw;
+  }
+}
+.list {
+  align-items: center;
+  display: flex;
+}
