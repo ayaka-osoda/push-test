@@ -1,10 +1,4 @@
-// Place all the styles related to the Tasks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-$color-primary: #1e90ff;
-$color-secondary: #b0e0e6;
-
-$color-white: #fff;
+@import '../../../stylesheets/valiables.scss';
 
 .list-wrapper-outsider {
   border: solid 0.2vw $color-primary;
