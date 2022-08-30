@@ -1,9 +1,5 @@
-// Run this example by adding <%= javascript_pack_tag 'hello_react' %> to the head of your layout file,
-// like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
-// of the page.
-
 import { useState } from 'react';
-import * as React from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { Base, Button, List, ListWrapper, Title } from '../components';
@@ -51,21 +47,19 @@ function Tasks(props: Props) {
 
   return (
     <Base>
-      <div className="todo-ap">
-        <Title>Todo List</Title>
-        <Button appearance='primary'>新規作成</Button>
-        <ListWrapper>
-          {state.tasks.map((task) => (
-            <List key={task.id}>
-              <Button appearance='primary' onClick={() => updateTask(task)}>
-                {task.completed ? '完了' : '未完了'}
-              </Button>
-              <span>{task.name}</span>
-            </List>
-          ))}
-        </ListWrapper>
-        <Button appearance='secondary'>back</Button>
-      </div>
+      <Title>Todo List</Title>
+      <Button appearance='primary'>新規作成</Button>
+      <ListWrapper>
+        {state.tasks.map((task) => (
+          <List key={task.id}>
+            <Button appearance='primary' onClick={() => updateTask(task)}>
+              {task.completed ? '完了' : '未完了'}
+            </Button>
+            <span>{task.name}</span>
+          </List>
+        ))}
+      </ListWrapper>
+      <Button appearance='secondary'>back</Button>
     </Base>
   );
 }
