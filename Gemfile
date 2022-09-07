@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'virtus'
 end
 
 group :development do
@@ -54,8 +55,6 @@ group :development do
   # rspec導入時に追加でinstall
   # gem "rubocop-rspec"
   gem 'pre-commit', require: false
-
-  gem 'virtus'
 end
 
 group :test do
