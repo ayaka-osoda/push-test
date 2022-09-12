@@ -2,18 +2,26 @@
 
 .list-wrapper-outsider {
   border: solid 0.2vw $color-primary;
+  border-radius: 0.4vw;
   max-height: 100%;
   overflow: overlay;
   padding: 0 1vw;
 }
+
 .list-wrapper {
   margin: 1vw 0;
   padding: 0;
+
   > :not(:last-child) {
     margin-bottom: 1vw;
   }
 }
+
 .list {
   align-items: center;
   display: flex;
+
+  > :not(:last-child) {
+    margin-right: 0.5vw;
+  }
 }

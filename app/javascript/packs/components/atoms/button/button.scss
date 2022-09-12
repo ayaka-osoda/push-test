@@ -6,21 +6,28 @@
   border-width: 0.2vw;
   border-style: solid;
   cursor: pointer;
+  color: $color-text;
   display: flex;
+  font-size: $font-size-m;
+  font-family: $font-family;
   height: 2vw;
-  padding: 1vw;
+  padding: 0 0.8vw;
+
   &:hover {
     transition: 0.2s linear;
+
     &.btn-primary,
     &.btn-secondary {
       background: $color-white;
     }
   }
 }
+
 .btn-primary {
   background: $color-primary;
   border-color: $color-primary;
 }
+
 .btn-secondary {
   background: $color-secondary;
   border-color: $color-secondary;

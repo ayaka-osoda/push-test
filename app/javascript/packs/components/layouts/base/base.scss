@@ -1,4 +1,9 @@
+@import '../../../stylesheets/valiables.scss';
+
 .base {
+  color: $color-text;
+  font-size: $font-size-m;
+  font-family: $font-family;
   overflow: overlay hidden;
   padding: 1vw;
 }
