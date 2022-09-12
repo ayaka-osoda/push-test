@@ -12,9 +12,13 @@ RSpec.describe "Tasks", type: :request do
     let (:user) { FactoryBot.create(:user) }
     let (:task) { FactoryBot.create(:task, user_id: user.id) }
 
-    it 'Task一の更新に成功すること' do
-      put "/tasks/#{task.id}", params: { id: task.id, completed: !task.completed }
+    let (:update_task_param) { { id: task.id, completed: !task.completed } }
+    let (:updated_task_status) { {"id"=>task.id, "completed"=>!task.completed} }
+
+    it "Task一の更新に成功すること" do
+      put "/tasks/#{task.id}", params: update_task_param
       expect(response).to have_http_status(200)
+      expect(JSON.parse(response.body)[0]).to include(updated_task_status)
     end
   end
 end
