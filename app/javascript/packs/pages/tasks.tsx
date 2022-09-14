@@ -2,7 +2,7 @@ import { useState } from 'react';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-import { Base, Button, FrameFlex, List, ListWrapper, Title } from '../components';
+import { Base, Button, Checkbox, FrameFlex, List, ListWrapper, Title } from '../components';
 
 interface Task {
   id: number;
@@ -53,10 +53,9 @@ function Tasks(props: Props) {
         <ListWrapper>
           {state.tasks.map((task) => (
             <List key={task.id}>
-              <Button appearance='primary' onClick={() => updateTask(task)}>
-                {task.completed ? '完了' : '未完了'}
-              </Button>
-              <span>{task.name}</span>
+              <Checkbox value={task.name} checked={task.completed} onChange={() => updateTask(task)}>
+                {task.name}
+              </Checkbox>
             </List>
           ))}
         </ListWrapper>

@@ -1,0 +1,65 @@
+@import '../../../stylesheets/valiables.scss';
+
+.checkbox-wrapper {
+  position: relative;
+
+  margin: 0.5vw;
+
+  font-family: $font-family;
+  line-height: 135%;
+
+  >* {
+    cursor: pointer;
+  }
+}
+
+.checkbox {
+  position: relative;
+  top: rem(-6);
+
+  margin: 0 1rem 0 0;
+
+  cursor: pointer;
+
+  &:before {
+    transition: all .3s ease-in-out;
+
+    content: "";
+
+    position: absolute;
+    left: 0;
+    z-index: 1;
+
+    width: 1rem;
+    height: 1rem;
+
+    border: 2px solid $color-whitegray;
+  }
+
+  &:checked {
+    &:before {
+      transform: rotate(-45deg);
+
+      height: .5rem;
+
+      border-color: $color-primary;
+      border-top-style: none;
+      border-right-style: none;
+    }
+  }
+
+  &:after {
+    content: "";
+
+    position: absolute;
+    top: rem(-2);
+    left: 0;
+
+    width: 1.1rem;
+    height: 1.1rem;
+
+    background: $color-white;
+
+    cursor: pointer;
+  }
+}
