@@ -2,7 +2,7 @@ import { useState } from 'react';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-import { Base, Button, Checkbox, FrameFlex, List, ListWrapper, Title } from '../../components';
+import { Base, Button, Checkbox, FrameFlex, Icon, List, ListWrapper, Title } from '../../components';
 
 interface Task {
   id: number;
@@ -18,6 +18,7 @@ interface Props {
 
 function Tasks(props: Props) {
   const [state, setState] = useState({ ...props });
+  const [editMode, setEditMode] = useState(false);
 
   const updateTask = (task: Task) => {
     fetch(`/tasks/${task.id}`, {
@@ -61,6 +62,7 @@ function Tasks(props: Props) {
                 {task.name}
               </Checkbox>
               <span>{task.deadline}</span>
+              <Icon type={editMode ? 'edit' : 'complete'} onClick={() => setEditMode(!editMode)} />
             </List>
           ))}
         </ListWrapper>
