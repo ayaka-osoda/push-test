@@ -1,4 +1,13 @@
+@import '../../../stylesheets/valiables.scss';
+
 .icon-image {
+  border-radius: 0.2vw;
+  cursor: pointer;
   height: 1.2vw;
+  padding: 0.2vw;
   width: 1.2vw;
+
+  &:hover {
+    background-color: $color-secondary;
+  }
 }
