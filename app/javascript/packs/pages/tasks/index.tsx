@@ -26,10 +26,7 @@ function Tasks(props: Props) {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        id: task.id,
-        completed: !task.completed,
-      }),
+      body: JSON.stringify({ ...task }),
     })
       .then((response) => {
         if (!response.ok) {
@@ -46,6 +43,12 @@ function Tasks(props: Props) {
       });
   };
 
+  const toggleCompleteTask = (task: Task) => {
+    const newTask: Task = { ...task };
+    newTask.completed = !newTask.completed;
+    updateTask(newTask);
+  };
+
   return (
     <Base>
       <Title>Todo List</Title>
@@ -54,7 +57,7 @@ function Tasks(props: Props) {
         <ListWrapper>
           {state.tasks.map((task) => (
             <List key={task.id}>
-              <Checkbox value={task.name} checked={task.completed} onChange={() => updateTask(task)}>
+              <Checkbox value={task.name} checked={task.completed} onChange={() => toggleCompleteTask(task)}>
                 {task.name}
               </Checkbox>
               <span>{task.deadline}</span>
