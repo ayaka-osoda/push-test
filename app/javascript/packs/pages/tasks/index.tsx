@@ -44,6 +44,18 @@ function Tasks(props: Props) {
       });
   };
 
+  const TaskComponent = (task: Task) => {
+    return <>
+      <Checkbox value={task.name} checked={task.completed} onChange={() => toggleCompleteTask(task)}>
+        {task.name}
+      </Checkbox>
+      <span>{task.deadline}</span>
+      <Icon
+        type={editingTaskId === task.id ? 'complete' : 'edit'}
+        onClick={() => setEditingTaskId(task.id)} />
+    </>;
+  }
+
   const toggleCompleteTask = (task: Task) => {
     const newTask: Task = { ...task };
     newTask.completed = !newTask.completed;
@@ -58,14 +70,7 @@ function Tasks(props: Props) {
         <ListWrapper>
           {state.tasks.map((task) => (
             <List key={task.id}>
-              <Checkbox value={task.name} checked={task.completed} onChange={() => toggleCompleteTask(task)}>
-                {task.name}
-              </Checkbox>
-              <span>{task.deadline}</span>
-              <Icon
-                type={editingTaskId === task.id ? 'complete' : 'edit'}
-                onClick={() => setEditingTaskId(task.id)}
-              />
+              {TaskComponent(task)}
             </List>
           ))}
         </ListWrapper>
