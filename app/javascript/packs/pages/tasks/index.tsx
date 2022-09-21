@@ -18,7 +18,7 @@ interface Props {
 
 function Tasks(props: Props) {
   const [state, setState] = useState({ ...props });
-  const [editMode, setEditMode] = useState(false);
+  const [editingTaskId, setEditingTaskId] = useState(null);
 
   const updateTask = (task: Task) => {
     fetch(`/tasks/${task.id}`, {
@@ -62,7 +62,10 @@ function Tasks(props: Props) {
                 {task.name}
               </Checkbox>
               <span>{task.deadline}</span>
-              <Icon type={editMode ? 'edit' : 'complete'} onClick={() => setEditMode(!editMode)} />
+              <Icon
+                type={editingTaskId === task.id ? 'complete' : 'edit'}
+                onClick={() => setEditingTaskId(task.id)}
+              />
             </List>
           ))}
         </ListWrapper>
