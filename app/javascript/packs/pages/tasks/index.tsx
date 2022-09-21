@@ -45,15 +45,24 @@ function Tasks(props: Props) {
   };
 
   const TaskComponent = (task: Task) => {
-    return <>
-      <Checkbox value={task.name} checked={task.completed} onChange={() => toggleCompleteTask(task)}>
-        {task.name}
-      </Checkbox>
-      <span>{task.deadline}</span>
-      <Icon
-        type={editingTaskId === task.id ? 'complete' : 'edit'}
-        onClick={() => setEditingTaskId(task.id)} />
-    </>;
+    if (task.id === editingTaskId) {
+      return <>
+        <Checkbox value={task.name} checked={task.completed} onChange={() => toggleCompleteTask(task)}>
+          {task.name}
+        </Checkbox>
+        <span>{task.deadline}</span>
+        <Icon type='complete' onClick={() => setEditingTaskId(null)} />
+      </>;
+    } else {
+      return <>
+        <Checkbox value={task.name} checked={task.completed} onChange={() => toggleCompleteTask(task)}>
+          {task.name}
+        </Checkbox>
+        <span>{task.deadline}</span>
+        <Icon type='edit' onClick={() => setEditingTaskId(task.id)} />
+      </>;
+
+    }
   }
 
   const toggleCompleteTask = (task: Task) => {
